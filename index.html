@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A fan-made PondPhuwin appreciation page: a little universe of wishes, memories and kind words.">
+<meta name="theme-color" content="#fff8f2">
+
+<title>PondPhuwin | A Sky Full of Us</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Background layers -->
+<div class="stars" aria-hidden="true"></div>
+<div id="sky" aria-hidden="true"></div>
+<div id="trail" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+    <a class="logo" href="#home" aria-label="PondPhuwin home">pond<span>phuwin</span> ♡</a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="#home">Home</a>
+        <a href="#wishes">Make a wish</a>
+        <a href="#memories">Memories</a>
+        <a href="#letter">Letter</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to night sky">
+            <span class="theme-toggle__track">
+                <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
+                <span class="theme-toggle__thumb"></span>
+            </span>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-orb" aria-hidden="true"></div>
+        <div class="hero-cloud hero-cloud--one" aria-hidden="true">☁</div>
+        <div class="hero-cloud hero-cloud--two" aria-hidden="true">☁</div>
+
+        <div class="hero-content">
+            <p class="pill">A little universe of its own</p>
+
+            <h1>
+                <span class="line">Some stories</span>
+                <span class="line line--italic">feel like stardust.</span>
+            </h1>
+
+            <p class="hero-description">
+                A small corner of the sky for Pond and Phuwin: the moments that make us smile,
+                the memories we keep, and the stories still waiting to be told.
+            </p>
+
+            <div class="button-row">
+                <a class="btn btn-primary" href="#memories">Explore their universe</a>
+                <button class="btn btn-secondary" id="heroWish" type="button">Send a little wish ✿</button>
+            </div>
+
+            <ul class="hero-stats" aria-label="About this page">
+                <li><strong id="heroWishCount">0</strong><span>wishes sent</span></li>
+                <li><strong>2</strong><span>universes, one sky</span></li>
+                <li><strong>∞</strong><span>memories kept</span></li>
+            </ul>
+        </div>
+
+        <div class="hero-visual">
+            <div class="photo-frame" data-initial="PP">
+                <img src="pondphuwin.jpeg" alt="Pond and Phuwin" data-fallback>
+            </div>
+
+	    <div class="chip chip--pond" aria-hidden="true">☀ Pond</div>
+            <div class="chip chip--phuwin" aria-hidden="true">☁ Phuwin</div>
+            
+            <div class="floating-note">
+                <small>A little reminder</small>
+                <p>Keep the memories ♡</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RIBBON -->
+    <div class="ribbon" aria-hidden="true">
+        <div class="ribbon__track">
+            <span>✿ stardust</span><span>♡ little wishes</span><span>✧ shared sky</span><span>🦋 kind words</span><span>☁ soft days</span><span>🌷 new chapters</span>
+            <span>✿ stardust</span><span>♡ little wishes</span><span>✧ shared sky</span><span>🦋 kind words</span><span>☁ soft days</span><span>🌷 new chapters</span>
+        </div>
+    </div>
+
+    <!-- WISHES -->
+    <section class="wish-section" id="wishes">
+        <div class="section-heading">
+            <h2 class="section-title">Let's fill the sky with little wishes.</h2>
+            <p class="section-description">
+                Write a wish and it becomes a star in the sky below, or just sprinkle some magic and watch it drift up.
+            </p>
+        </div>
+
+        <div class="wish-layout">
+            <form class="wish-form" id="wishForm" autocomplete="off">
+                <label for="wishInput">Your wish</label>
+                <textarea id="wishInput" maxlength="120" rows="3" placeholder="May you always have a reason to smile…"></textarea>
+                <div class="wish-form__meta">
+                    <span id="charCount" aria-live="off">0 / 120</span>
+                    <span class="wish-form__error" id="wishError" role="alert"></span>
+                </div>
+
+                <div class="button-row">
+                    <button class="wish-button" type="submit">✿ Send my wish</button>
+                    <button class="btn btn-secondary" id="wishButton" type="button">Sprinkle magic</button>
+                </div>
+
+                <p class="wish-counter">Wishes sent into the universe: <strong id="wishCount">0</strong></p>
+                <p class="wish-message" id="wishMessage" aria-live="polite">Your little universe is waiting.</p>
+            </form>
+
+            <div class="wish-sky" id="wishSky" aria-label="Sky of wishes">
+                <p class="wish-sky__empty" id="wishEmpty">Your first wish will appear here as a star.</p>
+                <button class="wish-sky__clear" id="clearWishes" type="button" hidden>Clear sky</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMORIES -->
+    <section class="memories" id="memories">
+        <div class="section-heading">
+            <h2 class="section-title">A gallery of moments.</h2>
+            <p class="section-description">A few little frames in this ever-growing universe. Tap a card to see it bigger.</p>
+        </div>
+
+        <div class="memory-grid">
+            <article class="memory-card" data-tilt="-2">
+                <button class="memory-card__open" type="button" data-title="Pond's Universe" data-caption="A little appreciation for Pond Naravit.">
+                    <span class="memory-card__photo" data-initial="P">
+                        <img src="pond.jpeg" alt="Pond Naravit" loading="lazy" data-fallback>
+                    </span>
+                    <span class="memory-card__body">
+                        <h3>Pond's Universe ☀</h3>
+                        <p>A little appreciation for Pond Naravit.</p>
+                    </span>
+                </button>
+            </article>
+
+            <article class="memory-card" data-tilt="1.5">
+                <button class="memory-card__open" type="button" data-title="Phuwin's Universe" data-caption="A little appreciation for Phuwin Tangsakyuen.">
+                    <span class="memory-card__photo" data-initial="P">
+                        <img src="phuwin.jpeg" alt="Phuwin Tangsakyuen" loading="lazy" data-fallback>
+                    </span>
+                    <span class="memory-card__body">
+                        <h3>Phuwin's Universe ☁</h3>
+                        <p>A little appreciation for Phuwin Tangsakyuen.</p>
+                    </span>
+                </button>
+            </article>
+
+            <article class="memory-card" data-tilt="-1">
+                <button class="memory-card__open" type="button" data-title="The Moments" data-caption="For the moments fans love to remember.">
+                    <span class="memory-card__photo" data-initial="♡">
+                        <img src="pondphuwin-memory.jpeg" alt="Pond and Phuwin memory" loading="lazy" data-fallback>
+                    </span>
+                    <span class="memory-card__body">
+                        <h3>The Moments ♡</h3>
+                        <p>For the moments fans love to remember.</p>
+                    </span>
+                </button>
+            </article>
+        </div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="letter-section" id="letter">
+        <div class="section-heading">
+            <h2 class="section-title">A little letter to this universe.</h2>
+            <p class="section-description">From a fan, with love. Tap the envelope to open it.</p>
+        </div>
+
+        <div class="envelope-wrap">
+            <button class="envelope" id="envelope" type="button" aria-expanded="false" aria-controls="letterPaper">
+                <span class="envelope__back"></span>
+                <span class="envelope__paper" id="letterPaper">
+                    <span class="envelope__paper-inner">
+                        <span class="envelope__flower" aria-hidden="true">❀</span>
+                        <span class="envelope__text">
+                            Some people become part of our favourite memories without even knowing it.
+                            Through stories, laughter, and the moments we revisit, they make ordinary
+                            days feel a little more special.
+                        </span>
+                        <span class="envelope__text">
+                            Wherever life takes them, may there always be room for happiness,
+                            new beginnings, and beautiful things worth looking forward to.
+                        </span>
+                    </span>
+                </span>
+                <span class="envelope__front"></span>
+                <span class="envelope__flap"></span>
+                <span class="envelope__seal" aria-hidden="true">♡</span>
+                <span class="envelope__hint">Open the letter</span>
+            </button>
+
+            <div class="surprise">
+                <button class="surprise-button" id="surpriseButton" type="button" aria-expanded="false" aria-controls="surpriseMessage">
+                    Open your little surprise ♡
+                </button>
+
+                <div class="surprise-message" id="surpriseMessage" hidden>
+                    If this little universe could make one wish, it would be for more reasons to smile,
+                    more beautiful memories, and more kindness in every chapter ahead. 🌷
+                    <br><br>
+                    With love, from one little corner of the fandom. ♡
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-heart" aria-hidden="true">♡</div>
+    <h2>A Sky Full of Us</h2>
+    <p>
+        A fan-made PondPhuwin appreciation page.<br>
+        Created with love, a little code, and lots of imagination.
+    </p>
+    <p class="footer-credit">Made by Little Code Universe ✿</p>
+    <a class="back-to-top" href="#home">Back to the top ↑</a>
+</footer>
+
+<!-- Lightbox -->
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightboxTitle">
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close">×</button>
+    <div class="lightbox__photo" id="lightboxPhoto" data-initial="♡">
+        <img id="lightboxImg" alt="">
+    </div>
+    <div class="lightbox__caption">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxText"></p>
+    </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
